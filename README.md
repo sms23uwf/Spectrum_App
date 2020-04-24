@@ -1,6 +1,10 @@
+# npm install
+
+after cloning this boilerplate project locally, open up a terminal window and navigate to the root folder for the project, and type in: npm install. This will install everything that is referenced in the package.json file.
+
 # launch live serve
 
-after cloning this boilerplate project locally, open up a terminal window and navigate to the root folder for the project, and type in: npm run dev-server.
+When that finishes, type in: npm run dev-server.
 
 Then, open up a chrome browser and navigate to the url provided by the dev-server, for example http://localhost:8080
 
