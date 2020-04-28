@@ -16,5 +16,7 @@ git init - Creata a new git repo
 git status - View the changes in your project code
 git add - Add files to staging area
 git commit - Creates a new commit with files from staging area
+git push origin master - will push to your github repository and "check in" the work.
+    - assumes you are checking in to the main or "master" branch
 git log - View recent commits
 
