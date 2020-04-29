@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import AppRouter from './routers/AppRouter';
+import configureStore from './store/configureStore';
 import 'normalize.css/normalize.css';
+import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates/initialize';
 
+const store = configureStore();
 
-import { square, add } from './utils.js';
+const jsx = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+);
 
-
-console.log('app.js is running');
-console.log(square(4));
-console.log(add(100,23));
-
-var template = <p>This is JSX from app.js</p>;
-var appRoot = document.getElementById('app');
-
-ReactDOM.render(template,appRoot);
+ReactDOM.render(jsx, document.getElementById('app'));
