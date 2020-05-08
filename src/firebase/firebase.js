@@ -1,13 +1,13 @@
 import * as firebase from 'firebase';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAc_8ud6kehCcL9Gh9AzKEsN-pH7EOD-zk",
-    authDomain: "spectrum-sms23.firebaseapp.com",
-    databaseURL: "https://spectrum-sms23.firebaseio.com",
-    projectId: "spectrum-sms23",
-    storageBucket: "spectrum-sms23.appspot.com",
-    messagingSenderId: "877007380111",
-    appId: "1:877007380111:web:2ca7c3188ad4d973395afa"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID
   };
 
   firebase.initializeApp(firebaseConfig);
@@ -16,7 +16,7 @@ const firebaseConfig = {
   const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
  
-  console.log("database code")
+  console.log("database connection initialized!")
                                                
   export { firebase, googleAuthProvider, database as default };
 
