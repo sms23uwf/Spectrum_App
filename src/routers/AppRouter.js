@@ -3,6 +3,7 @@ import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import HelpPage from '../components/HelpPage';
 import NotFoundPage from '../components/NotFoundPage';
+import LoginPage from '../components/LoginPage';
 import DashboardPage from '../components/DashboardPage';
 import FileSelectionDashboard from '../components/FileSelectionDashboard';
 import MissionDataDashboard from '../components/MissionDataDashboard';
@@ -18,7 +19,8 @@ const AppRouter = () => (
     <div>
       <Header />
       <Switch>
-        <Route path="/" component={DashboardPage} exact={true} />
+        <Route path="/" component={LoginPage} exact={true} />
+        <Route path="/cancel" component={LoginPage} exact={true} />
         <Route path="/dashboard" component={DashboardPage} />
         <Route path="/fileSelectionDashboard" component={FileSelectionDashboard} />
         <Route path="/missionDataDashboard" component={MissionDataDashboard} />

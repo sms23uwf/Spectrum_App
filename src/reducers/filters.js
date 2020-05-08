@@ -4,6 +4,9 @@ import moment from 'moment';
 
 const filtersReducerDefaultState = {
   text: '',
+  emitterId: '',
+  emitterModeId: '',
+  userId: '',
   sortBy: 'date',
   startDate: moment().startOf('month'),
   endDate: moment().endOf('month')
@@ -16,25 +19,20 @@ export default (state = filtersReducerDefaultState, action) => {
         ...state,
         text: action.text
       };
-    case 'SORT_BY_AMOUNT':
+    case 'SET_UUID_FILTER':
       return {
         ...state,
-        sortBy: 'amount'
+        userId: action.userId
       };
-    case 'SORT_BY_DATE':
+    case 'SET_EMITTER_FILTER':
       return {
         ...state,
-        sortBy: 'date'
+        emitterid: action.emitterId
       };
-    case 'SET_START_DATE':
+      case 'SET_EMITTER_MODE_FILTER':
       return {
         ...state,
-        startDate: action.startDate
-      };
-    case 'SET_END_DATE':
-      return {
-        ...state,
-        endDate: action.endDate
+        emittermodeid: action.emitterModeId
       };
     default:
       return state;

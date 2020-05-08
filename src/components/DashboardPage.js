@@ -7,7 +7,7 @@ import { PropTypes } from 'prop-types';
 import { history } from '../routers/AppRouter';
 import selectUsers from '../selectors/users';
 import { startAddUser } from '../actions/users';
-//import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 import Grid from '@material-ui/core/Grid';
 import { setUUIDFilter } from '../actions/filters';
 import Typography from "@material-ui/core/Typography";
@@ -95,15 +95,15 @@ export class DashboardPage extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    //users: selectUsers(state.users, firebase.auth().currentUser.uid),
+    users: selectUsers(state.users, firebase.auth().currentUser.uid),
     filters: state.filters
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   startLogin: () => dispatch(startLogin()),
-  startAddUser: () => dispatch(startAddUser())
-  //setUUIDFilter: (userId) => dispatch(setUUIDFilter(userId))
+  startAddUser: () => dispatch(startAddUser()),
+  setUUIDFilter: (userId) => dispatch(setUUIDFilter(userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);
