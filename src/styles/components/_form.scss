@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  >* {
+    margin-bottom: $m-size;
+  }
+}
+
+.form-check {
+  p {
+    padding-left: 12px; 
+    vertical-align: top;
+  }
+}
+
+.form-check-input {
+  height: 100%;
+  vertical-align: top;
+}
+
+.form__error {
+  margin: 0 0 $m-size 0;
+  font-style: italic;
+}

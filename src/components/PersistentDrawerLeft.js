@@ -101,6 +101,7 @@ export function PersistentDrawerLeft({ handleLogout }) {
   }
 
   function handleDrawerClose() {
+    console.log("handleDrawerClose called")
     setOpen(false);
   }
 
@@ -112,7 +113,7 @@ export function PersistentDrawerLeft({ handleLogout }) {
     <div>
       <CssBaseline />
       <AppBar
-        position="sticky"
+        position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}

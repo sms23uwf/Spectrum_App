@@ -1,0 +1,65 @@
+.box-layout {
+  align-items: center;
+  background: url('/images/scholacity_preauth_spring.jpg');
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.box-layout__box {
+  background: fade-out(white, .15);
+  border-radius: 3px;
+  padding: $l-size $m-size;
+  text-align: center;
+  width: 25rem;
+}
+
+.box-layout__title {
+  margin: 0 0 $m-size 0;
+  line-height: 1;
+}
+.box-layout_dashboard {
+  align-items: center;
+  background: url('/images/Scholacity_Img.jpg');
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;  
+}
+.box-layout_recommendation_0 {
+  align-items: left;
+  background: url('/images/verysad.png');
+  background-size: cover;
+  display: block;
+  justify-content: center;
+}
+.box-layout_recommendation_1 {
+  align-items: left;
+  background: url('/images/sad.png');
+  background-size: cover;
+  display: block;
+  justify-content: center;
+}
+.box-layout_recommendation_2 {
+  align-items: left;
+  background: url('/images/justso.png');
+  background-size: cover;
+  display: block;
+  justify-content: center;
+}
+.box-layout_recommendation_3 {
+  align-items: left;
+  background: url('/images/happy.png');
+  background-size: cover;
+  display: block;
+  justify-content: center;
+}
+.box-layout_recommendation_4 {
+  align-items: left;
+  background: url('/images/veryhappy.png');
+  background-size: cover;
+  display: block;
+  justify-content: center;
+}

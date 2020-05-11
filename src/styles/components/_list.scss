@@ -1,0 +1,153 @@
+.list-collapsible-container {
+  background: #cccccc;
+  border: 1px solid darken($off-white, 7%);
+  color: $dark-grey;
+  display: flex;
+  justify-content: space-between;
+  font-size: large;
+  padding: $s-size $m-size;
+  font-weight: 600;
+  span {
+    font-weight: 700;
+  }
+}
+
+.list-header {
+  background: #dddddd;
+  border: 1px solid darken($off-white, 7%);
+  color: #000000;
+  display: flex;
+  font-size: x-large;
+  justify-content: space-between;
+  padding: $s-size $m-size;
+}
+
+.list-subheader {
+  background: #dddddd;
+  border: 1px solid darken($off-white, 7%);
+  color: #000000;
+  display: flex;
+  font-size: x-large;
+  justify-content: space-between;
+  padding: $s-size $m-size;
+}
+
+.list-body {
+  margin-bottom: $m-size;
+  @media (min-width: $desktop-breakpoint) {
+    margin-bottom: $l-size;
+  }
+}
+
+.list-item {
+  background: #eeeeee;
+  border: 1px solid darken($off-white, 7%);
+  border-top: none;
+  color: $dark-grey;
+  display: flex;
+  white-space: pre-wrap;
+  width: 100%;
+  flex-direction: column;
+  padding: $s-size;
+  text-decoration: none;
+  transition: background .3s ease;
+  &:hover {
+    background: $off-white;
+  }
+  @media (min-width: $desktop-breakpoint) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $m-size;
+  }
+}
+
+.list-item-recommendation-0 {
+  background: #eeeeee;
+  background: url('/images/verysad.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10%;
+  border: 1px solid darken($off-white, 7%);
+  border-top: none;
+  color: $dark-grey;
+  display: block;
+  white-space: pre-wrap;
+  width: 100%;
+  flex-direction: column;
+  padding: $s-size;
+  text-decoration: none;
+  transition: background .3s ease;
+  &:hover {
+    background: $off-white;
+  }
+  @media (min-width: $desktop-breakpoint) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $m-size;
+  }
+}
+
+.list-item--inline {
+  background: #eeeeee;
+  border: 1px solid darken($off-white, 7%);
+  border-top: none;
+  color: $dark-grey;
+  display: inline-block;
+  flex-direction: column;
+  padding: $s-size;
+  text-decoration: none;
+  transition: background .3s ease;
+  &:hover {
+    background: $off-white;
+  }
+  @media (min-width: $desktop-breakpoint) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $m-size;
+  }
+}
+
+.list-item--message {
+  align-items: center;
+  color: $grey;
+  justify-content: center;
+  padding: $m-size;
+  &:hover {
+    background: none;
+  }
+}
+
+.list-item__title {
+  margin: 0;
+  word-break: break-all;
+}
+
+.list-item__sub-title {
+  color: $grey;
+  font-size: $font-size-small;
+}
+
+.list-item__consent {
+  margin: $s-size 0 0 0;
+  color: $black;
+  background: #eeeeee;
+  transition: background .3s ease;
+  &:hover {
+    background: $off-white;
+  }  
+  @media (min-width: $desktop-breakpoint) {
+    margin: 0;
+    padding-left: $s-size;
+  }
+}
+
+.list-item__data {
+  margin: $s-size 0 0 0;
+  @media (min-width: $desktop-breakpoint) {
+    margin: 0;
+    padding-left: $s-size;
+  }
+}
