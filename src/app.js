@@ -11,6 +11,7 @@ import { login, logout } from './actions/auth';
 import { startSetUsers } from './actions/users';
 import { startSetEmitters } from './actions/emitters';
 import { startSetEmitterModes } from './actions/emitterModes';
+import { startSetGenerators } from './actions/generators';
 import { firebase} from './firebase/firebase';
 import { setUUIDFilter } from './actions/filters';
 import LoadingPage from './components/LoadingPage';
@@ -53,7 +54,8 @@ firebase.auth().onAuthStateChanged((user) => {
     store.dispatch(setUUIDFilter(firebase.auth().currentUser.uid));
     store.dispatch(login(user.uid));
     store.dispatch(startSetEmitters());
-    store.dispatch(startSetEmitterModes()).then(() => { 
+    store.dispatch(startSetEmitterModes());
+    store.dispatch(startSetGenerators()).then(() => { 
     renderApp();
     if (history.location.pathname === '/') {
       history.push('/dashboard');

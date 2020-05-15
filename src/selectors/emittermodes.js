@@ -1,8 +1,9 @@
 
-export default (emittermodes, { text, emitterModeId, userId }) => {
+export default (emittermodes,  { text, userId, emitterId, emitterModeId } ) => {
+    console.log(`inside selectors/emittermodes with emitterId ${emitterId}`)
     return emittermodes.filter((emittermode) => {
-        const textMatch = emittermode.emitterId.toLowerCase().includes(text.toLowerCase());
-        return textMatch;
+        const emitterMatch = emittermode.emitterId === emitterId;
+        return emitterMatch;
     }).sort((a,b) => {
         return a.sn < b.sn ? 1 : -1;
     });

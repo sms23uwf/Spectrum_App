@@ -5,8 +5,10 @@ import selectEmitters from '../selectors/emitters';
 import selectEmittersTotal from '../selectors/emitters-total';
 import selectEmitterModes from '../selectors/emittermodes';
 import EmitterModeList from './EmitterModeList';
+import { setEmitterFilter } from '../actions/filters';
 
 export const EmitterModeCollapsible = (props) => (
+
     props.emitters.map((emitter, key) => {
         return (
             <div key={key} className="content-container">
