@@ -1,133 +1,72 @@
 import React, {Fragment} from 'react';
-import { connect } from 'react-redux';
-import Collapsible from './Collapsible';
-import selectEmitters from '../selectors/emitters';
-import selectEmittersTotal from '../selectors/emitters-total';
-import selectEmitterModes from '../selectors/emittermodes';
-import selectModeGenerators from '../selectors/modegenerators';
-import EmitterModeList from './EmitterModeList';
-import EmitterModeDashboard from './EmitterModeDashboard';
-import { Checkbox } from '@material-ui/core';
-import Typography from 'material-ui/styles/typography';
-import { setTextFilter, setUUIDFilter, setEmitterFilter, setEmitterModeFilter, setGeneratorFilter } from '../actions/filters';
+import CheckboxTree from 'react-checkbox-tree';
 
-import TreeView from '@material-ui/lab/TreeView';
-import TreeItem from '@material-ui/lab/TreeItem';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-
-const getTreeItemsFromEmitters = () => {
-    const elements = [];
-
-    props.emitters.map((emitter, key) => {
-        const label = (
-            <div style={{ display:'flex', alignItems: 'center' }}>
-                <Checkbox
-                    id={`checkbox-${key}`}
-                    className={classes.Checkbox}
-                    checked={selected.has(key)}
-                    onChange={(event, checked) => checkBoxClicked(event, checked, key)}
-                    color="primary"
-                />
-                <Typography variant="caption">{emitter.lnot}</Typography>
-            </div>
-        );
-    });
-};
-
-const getTreeItemsFromModes = (emitterId) => {
-    this.props.setEmitterFilter(emitterId);
-    
-
-}
-
-const getTreeItemsFromGenerators = TreeItems => {
-
-}
-
-
-const tree = [
+const nodes = [
     {
-        value: 'Parent A',
-        nodes: [{value: 'Child A'}, {value: 'Child B'}],
+    value: '1',
+    label: 'Emitter 1',
+    children: [
+        { 
+            value: '1.1', 
+            label: 'Mode 1.1',
+            children: [
+                { value: '1.1.1', label: 'Generator 1.1.1' },
+                { value: '1.1.2', label: 'Generator 1.1.2' }
+            ], 
+        },
+        {
+            value: '1.2',
+            label: 'Mode 1.2',
+            children: [
+                { value: '1.2.1', label: 'Generator 1.2.1'},
+                { value: '1.2.2', label: 'Generator 1.2.2'}
+            ],
+        }
+    ],
     },
     {
-        value: 'Parent B',
-        nodes: [
-            {
-                value: 'Child C',
-            },
-            {
-                value:  'Parent C',
-                nodes: [
-                    { value: 'Child D' },
-                    { value: 'Child E' },
-                    { value: 'Child F' },
-                ],
-            },
-        ],
-    },
+    value: '2',
+    label: 'Emitter 2',
+    children: [
+        { 
+            value: '2.1', 
+            label: 'Mode 2.1',
+            children: [
+                { value: '2.1.1', label: 'Generator 2.1.1' },
+                { value: '2.1.2', label: 'Generator 2.1.2' }
+            ], 
+        },
+        {
+            value: '2.2',
+            label: 'Mode 2.2',
+            children: [
+                { value: '2.2.1', label: 'Generator 2.2.1'},
+                { value: '2.2.2', label: 'Generator 2.2.2'}
+            ],
+        }
+    ],
+
+    }
 ];
 
-
-const checkBoxClicked = (event, checked, id) => {
-    setOrgStructureElement(checked, id, selected, orgStructure);
-}
-
-const createOrgStructureLevel = orgStructureElement => {
-    const elements = [];
-
-    props.emitters.map((emitter, key) => {
-        const { id, lnot } = emitter;
-        const label = (
-            <div style={{ display:'flex', alignItems: 'center' }}>
-                <Checkbox
-                    id={`checkbox-${key}`}
-                    className={classes.Checkbox}
-                    checked={selected.has(key)}
-                    onChange={(event, checked) => checkBoxClicked(event, checked, key)}
-                    color="primary"
-                />
-                <Typography variant="caption">{emitter.lnot}</Typography>
-            </div>
-        );
-        elements.push()
-    })
-
-}
-
-
-
-export const EmitterModeCollapsible = (props) => (
-    
-    props.emitters.map((emitter, key) => {
-
-
-
-    //     return (
-    //         <div key={key} className="content-container">
-    //             <MuiTreeView tree={tree} />
-
-    //             {/* <Collapsible key={emitter.id} title={emitter.lnot} showCheckbox={true}>
-    //                 <EmitterModeList key={emitter.id} {...emitter} />
-    //             </Collapsible> */}
-    //         </div>
-    //     )
-
-
-    })
-
-);
-
-const mapStateToProps = (state) => {
-    return {
-        generators: selectModeGenerators(state.generators, state.filters),
-        emittermodes: selectEmitterModes(state.emittermodes, state.filters),
-        emitters: selectEmitters(state.emitters, state.filters),
-        checkboxChecked:false
+export class MissionDataTreeView extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    state = {
+        checked: [],
+        expanded: []
     };
-};
 
-export default connect(mapStateToProps) (MissionDataTreeView);
+    render() {
+        return (
+            <CheckboxTree
+                nodes={nodes}
+                checked={this.state.checked}
+                expanded={this.state.expanded}
+                onCheck={checked => this.setState({ checked })}
+                onExpand={expanded => this.setState({ expanded })}
+            />
+        );
+    }
+}

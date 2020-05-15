@@ -113,7 +113,7 @@ export function PersistentDrawerLeft({ handleLogout }) {
     <div>
       <CssBaseline />
       <AppBar
-        position="fixed"
+        position="sticky"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
