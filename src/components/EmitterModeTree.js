@@ -90,7 +90,7 @@ export class EmitterModeTree extends React.Component {
             childModes = this.populateChildModes(emitter.id);
             internalNodes.push({
                 value: emitter.id,
-                label: emitter.lnot,
+                label: `Emitter: ${emitter.lnot} - Antenna Type: ${emitter.antenna_type} - Code Type: ${emitter.code_type} - ELINT: ${emitter.elint} - AKA: ${emitter.nick}`,
                 children: childModes
             })
         });
@@ -107,7 +107,7 @@ export class EmitterModeTree extends React.Component {
             {
                 internalNodes.push({
                     value: mode.id,
-                    label: mode.sn,
+                    label: `Mode: ${mode.sn} - FC1: ${mode.fc1} - FC2: ${mode.fc2} - MC: ${mode.mc} - MP: ${mode.mp}`,
                     children: childGenerators
                 })
             }
@@ -123,8 +123,7 @@ export class EmitterModeTree extends React.Component {
             {
                 internalNodes.push({
                     value: generator.id,
-                    label: generator.polarization_type,
-                    children: []
+                    label: `Generator: ${generator.rf_mod_type_code} - Polarization: ${generator.polarization_type} - RF_MIN: ${generator.rf_min} - RF_MAX: ${generator.rf_max} `
                 })
             }
         });
