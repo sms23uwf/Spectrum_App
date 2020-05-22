@@ -10,7 +10,7 @@ export const MissionDataSummary = ({ emitterModesCount, emittersModesTotal }) =>
          <div className="page-header">
              <div className="content-container">
                 <div></div>
-                <h3 className="page-header__title">Select Emitters</h3>
+                <h3 className="page-header__title">Select Mission Data</h3>
              </div>
          </div>
      );

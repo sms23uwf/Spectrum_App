@@ -15,6 +15,17 @@ import { startSetGenerators } from './actions/generators';
 import { firebase} from './firebase/firebase';
 import { setUUIDFilter } from './actions/filters';
 import LoadingPage from './components/LoadingPage';
+import { render } from 'react-dom';
+// get fontawesome imports
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { fontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckSquare, faSquare, faChevronRight, faChevronDown, faPlusSquare, faMinusSquare, faFolder, faFolderOpen, faFile } from '@fortawesome/free-solid-svg-icons';
+
+
+
+library.add(faCheckSquare, faSquare, faChevronRight, faChevronDown, faPlusSquare, faMinusSquare, faFolder, faFolderOpen, faFile)
+//library.add(faStroopwafel)
 
 require('../public/images/favicon.ico');
 

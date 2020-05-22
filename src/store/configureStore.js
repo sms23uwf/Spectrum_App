@@ -5,6 +5,7 @@ import authReducer from '../reducers/auth';
 import usersReducer from '../reducers/users';
 import emittersReducer from '../reducers/emitters';
 import emitterModesReducer from '../reducers/emittermodes';
+import generatorsReducer from '../reducers/generators';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -13,6 +14,7 @@ export default () => {
     combineReducers({
       emitters: emittersReducer,
       emittermodes: emitterModesReducer,
+      generators: generatorsReducer,
       users: usersReducer,
       filters: filtersReducer,
       auth: authReducer

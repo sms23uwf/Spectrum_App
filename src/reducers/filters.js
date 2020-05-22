@@ -26,10 +26,15 @@ export default (state = filtersReducerDefaultState, action) => {
         ...state,
         emitterId: action.emitterId
       };
-      case 'SET_EMITTER_MODE_FILTER':
+    case 'SET_EMITTER_MODE_FILTER':
       return {
         ...state,
         emitterModeId: action.emitterModeId
+      };
+    case 'SET_GENERATOR_FILTER':
+        return {
+          ...state,
+          generatorId: action.generatorId
       };
     default:
       return state;

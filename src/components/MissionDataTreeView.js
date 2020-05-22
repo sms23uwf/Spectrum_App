@@ -1,5 +1,27 @@
-import React, {Fragment} from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import CheckboxTree from 'react-checkbox-tree';
+import * as firebase from 'firebase';
+import { setTextFilter, setUUIDFilter, setEmitterFilter, setEmitterModeFilter } from '../actions/filters';
+import selectEmitters from '../selectors/emitters';
+import selectEmitterModes from '../selectors/emittermodes';
+
+
+// const nodeData = () => {
+//     return (
+//         props.emitters.forEach((emitter) => {
+//             createNode(emitter.id, emitter.lnot);
+//         })
+//     )
+// };
+
+const createNode = (id, text) => [
+    {value: id,
+    label: text,
+    children: [
+
+    ]}
+];
 
 const nodes = [
     {
@@ -52,16 +74,28 @@ const nodes = [
 export class MissionDataTreeView extends React.Component {
     constructor(props) {
         super(props);
-    }
-    state = {
-        checked: [],
-        expanded: []
-    };
 
+        this.state = {
+            checked: [],
+            expanded: [],
+            userid: firebase.auth().currentUser.uid,
+            emitters: {},
+            emittermodeid: '',
+            emitterid: this.props.id
+        }
+    }
+
+   
     render() {
+
+        const nodeData = [];
+        this.emitters.map((emitter) => {
+            nodeData.push(createNode(emitter.id, emitter.lnot));
+        });
+
         return (
             <CheckboxTree
-                nodes={nodes}
+                nodes={nodeData}
                 checked={this.state.checked}
                 expanded={this.state.expanded}
                 onCheck={checked => this.setState({ checked })}
@@ -70,3 +104,18 @@ export class MissionDataTreeView extends React.Component {
         );
     }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    setEmitterFilter: (emitterid) => dispatch(setEmitterFilter(emitterid)),
+    setEmitterModeFilter: (emittermodeid) => dispatch(setEmitterModeFilter(emittermodeid))
+});
+
+const mapStateToProps = (state) => {
+    return {
+        emitters: selectEmitters(state.emitters, state.filters),
+        emittermodes: selectEmitterModes(state.emittermodes, state.filters),
+        filters: state.filters
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps) (MissionDataTreeView);

@@ -21,3 +21,9 @@ export const setEmitterModeFilter = (emitterModeId = '') => ({
   type: 'SET_EMITTER_MODE_FILTER',
   emitterModeId
 });
+
+// SET_GENERATOR_FILTER
+export const setGeneratorFilter = (generatorId = '') => ({
+  type: 'SET_GENERATOR_FILTER',
+  generatorId
+});
