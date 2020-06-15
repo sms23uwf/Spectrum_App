@@ -2,6 +2,11 @@
   background: $dark-blue;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .header__content {
   align-items: center;
   display: flex;

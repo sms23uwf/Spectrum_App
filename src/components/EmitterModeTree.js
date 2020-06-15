@@ -7,62 +7,11 @@ import selectEmitters from '../selectors/emitters';
 import selectEmitterModes from '../selectors/emittermodes';
 import selectGenerators from '../selectors/generators';
 import CheckboxTree from 'react-checkbox-tree';
-import EmitterModeTreeData from './EmitterModeTreeData';
-import { EmitterTreeData } from './EmitterTreeData';
 import { render } from 'react-dom';
 // get fontawesome imports
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
-// const nodes = [{
-//     value: '1',
-//     label: 'Emitter 1',
-//     children: [
-//         { 
-//             value: '1.1', 
-//             label: 'Mode 1.1',
-//             children: [
-//                 { value: '1.1.1', label: 'Generator 1.1.1' },
-//                 { value: '1.1.2', label: 'Generator 1.1.2' }
-//             ], 
-//         },
-//         {
-//             value: '1.2',
-//             label: 'Mode 1.2',
-//             children: [
-//                 { value: '1.2.1', label: 'Generator 1.2.1'},
-//                 { value: '1.2.2', label: 'Generator 1.2.2'}
-//             ],
-//         }
-//     ],
-//     },
-//     {
-//     value: '2',
-//     label: 'Emitter 2',
-//     children: [
-//         { 
-//             value: '2.1', 
-//             label: 'Mode 2.1',
-//             children: [
-//                 { value: '2.1.1', label: 'Generator 2.1.1' },
-//                 { value: '2.1.2', label: 'Generator 2.1.2' }
-//             ], 
-//         },
-//         {
-//             value: '2.2',
-//             label: 'Mode 2.2',
-//             children: [
-//                 { value: '2.2.1', label: 'Generator 2.2.1'},
-//                 { value: '2.2.2', label: 'Generator 2.2.2'}
-//             ],
-//         }
-//     ],
-
-// }];
-
-//let nodes = [];
 
 export class EmitterModeTree extends React.Component {
     constructor(props) {
@@ -102,6 +51,7 @@ export class EmitterModeTree extends React.Component {
         var childGenerators = [];
 
         this.props.emittermodes.map((mode, key) => {
+            this.props.setEmitterModeFilter(mode.id)
             childGenerators = this.populateChildGenerators(mode.id);
             if (mode.emitterId === currentEmitterId)
             {
@@ -157,7 +107,6 @@ export class EmitterModeTree extends React.Component {
                     parentOpen: <FontAwesomeIcon className="rct-icon rct-icon-parent-open" icon="folder-open" />,
                     leaf: <FontAwesomeIcon className="rct-icon rct-icon-leaf-close" icon="file" />
                 }}            
-                //nodes={nodes}
                 nodes={this.state.nodes}
                 checked={this.state.checked}
                 expanded={this.state.expanded}
@@ -165,37 +114,6 @@ export class EmitterModeTree extends React.Component {
                 onExpand={expanded => this.setState({ expanded })}
             />
 
-            // <div className="content-container">
-            //     <div className="list-header">
-            //         <div className="show-for-mobile"></div>
-            //         <div className="show-for-mobile">Mission Data</div>
-            //         <div className="show-for-desktop"></div>
-            //         <div className="show-for-desktop">Mission Data</div>
-            //     </div>
-            //     <div className="list-body">
-            //         {
-            //             this.props.emitters.length === 0 ? (
-            //                 <div className="list-item list-item--message">
-            //                     <span>No Mission Data</span>
-            //                 </div>    
-            //             ) : (
-
-            //                 <CheckboxTree 
-            //                     //nodes={[<EmitterTreeData key={this.state.userid}/>]}
-            //                     nodes={nodes}
-            //                     checked={this.state.checked}
-            //                     expanded={this.state.expanded}
-            //                     onCheck={checked => this.setState({ checked })}
-            //                     onExpand={expanded => this.setState({ expanded })}
-            //                 />
-        
-            //                 //this.props.emittermodes.map((emittermode) => {
-            //                    // return <EmitterModeListItem key={emittermode.id}{...emittermode} selectCallback={this.handleChange}/>;
-            //                 //})
-            //             )
-            //         };
-            //     </div>
-            // </div>
         )
     }
 };

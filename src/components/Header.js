@@ -5,7 +5,7 @@ import { PersistentDrawerLeft } from './PersistentDrawerLeft';
 
 const Header = () => (
   <header className="header">
-    <div className="content-container">
+    <div className="content-container-appbar">
       <div>
         <PersistentDrawerLeft/>
       </div>
